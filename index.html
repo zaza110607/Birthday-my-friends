@@ -71,8 +71,8 @@
         /* KARTU */
         .card {
             width: 90%;
-            max-width: 380px;
-            padding: 35px 25px;
+            max-width: 400px;
+            padding: 30px 25px;
             text-align: center;
             background: rgba(255, 255, 255, 0.94);
             border-radius: 30px;
@@ -83,7 +83,7 @@
 
         /* HADIAH */
         .gift {
-            font-size: 70px;
+            font-size: 65px;
             animation: bounce 1.5s infinite;
         }
 
@@ -106,10 +106,55 @@
         p {
             color: #666;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        /* INPUT PASSWORD */
+        /* COUNTDOWN */
+        #countdownPage {
+            display: block;
+        }
+
+        #countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .time-box {
+            background: #ffe1ed;
+            border-radius: 15px;
+            padding: 10px 5px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5c9a;
+        }
+
+        .time-box small {
+            color: #777;
+            font-size: 11px;
+        }
+
+        /* HARI HIDUP */
+        .days-lived {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f5eaff;
+            border-radius: 15px;
+            color: #8b5fc7;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        /* PASSWORD */
+        #passwordPage {
+            display: none;
+        }
+
         input {
             width: 100%;
             padding: 14px;
@@ -169,6 +214,23 @@
                 transform: translateX(8px);
             }
         }
+
+        /* SAAT COUNTDOWN SELESAI */
+        .finished {
+            animation: muncul 1s ease;
+        }
+
+        @keyframes muncul {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -182,15 +244,85 @@
         <div class="heart">💖</div>
     </div>
 
-    <!-- KARTU PASSWORD -->
-    <div class="card" id="card">
+
+    <!-- ========================= -->
+    <!-- HALAMAN COUNTDOWN -->
+    <!-- ========================= -->
+
+    <div class="card" id="countdownPage">
 
         <div class="gift">🎁</div>
 
         <h1>Birthday Surprise 💖</h1>
 
         <p>
-            Ada sesuatu yang spesial untukmu... 
+            Ada kejutan spesial yang sedang menunggumu... 🥰
+            <br>
+            Tapi belum boleh dibuka sekarang 😝
+        </p>
+
+        <p>
+            🎂 Kejutan akan terbuka pada
+            <br>
+            <b>27 Oktober 2026</b>
+        </p>
+
+        <div id="countdown">
+
+            <div class="time-box">
+                <span id="days">00</span>
+                <small>Hari</small>
+            </div>
+
+            <div class="time-box">
+                <span id="hours">00</span>
+                <small>Jam</small>
+            </div>
+
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <small>Menit</small>
+            </div>
+
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <small>Detik</small>
+            </div>
+
+        </div>
+
+
+        <!-- JUMLAH HARI HIDUP -->
+
+        <div class="days-lived">
+
+            🎂 Sejak 27 Oktober 2007,
+            <br>
+            kamu telah hidup selama
+            <br>
+
+            <span id="daysLived">0</span>
+
+            hari di dunia 🌎💕
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- HALAMAN PASSWORD -->
+    <!-- ========================= -->
+
+    <div class="card" id="passwordPage">
+
+        <div class="gift">🎁</div>
+
+        <h1>Birthday Surprise 💖</h1>
+
+        <p>
+            Waktunya tiba! 🎉
+            <br>
             Tapi kamu harus tahu sandinya dulu 😝
         </p>
 
@@ -208,7 +340,118 @@
 
     </div>
 
+
     <script>
+
+        /* =====================================
+           TANGGAL LAHIR
+           ===================================== */
+
+        const birthDate =
+            new Date("2007-10-27T00:00:00");
+
+
+        /* =====================================
+           WAKTU WEBSITE DIBUKA
+           27 OKTOBER 2026 JAM 00:00
+           ===================================== */
+
+        const openingDate =
+            new Date("2026-10-27T00:00:00");
+
+
+        /* =====================================
+           HITUNG JUMLAH HARI HIDUP
+           ===================================== */
+
+        function updateDaysLived() {
+
+            const now = new Date();
+
+            const difference =
+                now - birthDate;
+
+            const days =
+                Math.floor(
+                    difference / (1000 * 60 * 60 * 24)
+                );
+
+            document.getElementById("daysLived")
+                .textContent = days.toLocaleString("id-ID");
+        }
+
+
+        /* =====================================
+           COUNTDOWN
+           ===================================== */
+
+        function updateCountdown() {
+
+            const now = new Date();
+
+            const difference =
+                openingDate - now;
+
+
+            /* JIKA WAKTU SUDAH TIBA */
+
+            if (difference <= 0) {
+
+                document.getElementById("countdownPage")
+                    .style.display = "none";
+
+                document.getElementById("passwordPage")
+                    .style.display = "block";
+
+                document.getElementById("passwordPage")
+                    .classList.add("finished");
+
+                return;
+            }
+
+
+            /* HITUNG WAKTU */
+
+            const days =
+                Math.floor(
+                    difference / (1000 * 60 * 60 * 24)
+                );
+
+            const hours =
+                Math.floor(
+                    (difference / (1000 * 60 * 60)) % 24
+                );
+
+            const minutes =
+                Math.floor(
+                    (difference / (1000 * 60)) % 60
+                );
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+
+            /* TAMPILKAN */
+
+            document.getElementById("days")
+                .textContent = String(days).padStart(2, "0");
+
+            document.getElementById("hours")
+                .textContent = String(hours).padStart(2, "0");
+
+            document.getElementById("minutes")
+                .textContent = String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds")
+                .textContent = String(seconds).padStart(2, "0");
+        }
+
+
+        /* =====================================
+           PASSWORD
+           ===================================== */
 
         function checkPassword() {
 
@@ -219,18 +462,16 @@
                 document.getElementById("message");
 
             const card =
-                document.getElementById("card");
-
-            /*
-             * ============================
-             * GANTI SANDI DI SINI
-             * ============================
-             */
-
-            const correctPassword = "27oktober2007";
+                document.getElementById("passwordPage");
 
 
-            /* JIKA PASSWORD BENAR */
+            /* PASSWORD YANG BENAR */
+
+            const correctPassword =
+                "27oktober2007";
+
+
+            /* JIKA BENAR */
 
             if (password === correctPassword) {
 
@@ -239,12 +480,17 @@
                 message.innerHTML =
                     "Benar! Kejutan dimulai... 💖🎉";
 
-                window.location.href = "game.html";
+                setTimeout(function() {
+
+                    window.location.href =
+                        "game.html";
+
+                }, 500);
 
             }
 
 
-            /* JIKA PASSWORD SALAH */
+            /* JIKA SALAH */
 
             else {
 
@@ -258,12 +504,24 @@
                 void card.offsetWidth;
 
                 card.classList.add("shake");
-
             }
 
         }
 
+
+        /* =====================================
+           JALANKAN
+           ===================================== */
+
+        updateDaysLived();
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+        setInterval(updateDaysLived, 60000);
+
     </script>
 
 </body>
-  </html>
+</html>
