@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday My Best Friend ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "Times New Roman", serif;
+
+    background:
+        radial-gradient(circle at top,
+        #ffb6d9,
+        #c9a7ff 45%,
+        #8f7bea 100%);
+
+    color: white;
+    text-align: center;
+}
+
+
+/* =================================
+   PEMBUKAAN
+================================= */
+
+#intro {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(circle,
+        #30205c,
+        #120b27 70%);
+
+    transition: opacity 1.5s ease;
+}
+
+#intro h2 {
+    font-size: 25px;
+    margin-bottom: 25px;
+
+    animation: pulse 2s infinite;
+}
+
+#countdown {
+    font-size: 75px;
+    font-weight: bold;
+
+    text-shadow:
+        0 0 15px white,
+        0 0 35px #ff69b4;
+}
+
+
+/* =================================
+   KONTEN UTAMA
+================================= */
+
+#main {
+    opacity: 0;
+
+    transition: opacity 2s ease;
+
+    padding-top: 25px;
+}
+
+
+h1 {
+    font-size: 34px;
+
+    margin: 10px 20px 5px;
+
+    animation: glow 2s infinite alternate;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+
+/* =================================
+   FOTO MEMBENTUK HATI
+================================= */
+
+.heart {
+    position: relative;
+
+    width: 350px;
+    height: 340px;
+
+    margin: 10px auto 0;
+}
+
+
+/* =================================
+   FOTO
+================================= */
+
+.photo {
+    position: absolute;
+
+    width: 78px;
+    height: 78px;
+
+    object-fit: cover;
+
+    border: 4px solid white;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,0.3);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s,
+        box-shadow 0.4s;
+
+    animation: floatingPhoto 3s ease-in-out infinite;
+}
+
+.photo:hover {
+    transform: scale(1.2);
+
+    z-index: 50;
+
+    box-shadow:
+        0 0 25px white;
+}
+
+
+/* =================================
+   POSISI 10 FOTO
+================================= */
+
+/* Baris atas */
+
+.p1 {
+    top: 15px;
+    left: 83px;
+}
+
+.p2 {
+    top: 15px;
+    right: 83px;
+}
+
+
+/* Baris kedua */
+
+.p3 {
+    top: 75px;
+    left: 30px;
+}
+
+.p4 {
+    top: 75px;
+    left: 110px;
+}
+
+.p5 {
+    top: 75px;
+    right: 110px;
+}
+
+.p6 {
+    top: 75px;
+    right: 30px;
+}
+
+
+/* Baris ketiga */
+
+.p7 {
+    top: 140px;
+    left: 70px;
+}
+
+.p8 {
+    top: 140px;
+    right: 70px;
+
+
+/* Baris keempat */
+
+}
+
+.p9 {
+    top: 205px;
+    left: 111px;
+}
+
+.p10 {
+    top: 205px;
+    right: 111px;
+}
+
+
+/* =================================
+   PENUTUP
+================================= */
+
+.final-text {
+    margin: 0 25px 10px;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    text-shadow:
+        0 2px 7px rgba(0,0,0,0.25);
+}
+
+.big-love {
+    font-size: 27px;
+
+    font-weight: bold;
+
+    margin: 15px 20px 30px;
+
+    animation: pulse 2s infinite;
+}
+
+
+/* =================================
+   TOMBOL
+================================= */
+
+.button {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    margin-bottom: 40px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: #ed4c9a;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.08);
+}
+
+
+/* =================================
+   FOTO BESAR
+================================= */
+
+#photoViewer {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 900;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.85);
+
+    padding: 25px;
+}
+
+#photoViewer img {
+    max-width: 90%;
+    max-height: 80vh;
+
+    object-fit: contain;
+
+    border: 5px solid white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 30px white;
+}
+
+#closeViewer {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    font-size: 35px;
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   HATI TERBANG
+================================= */
+
+.floating-heart {
+    position: fixed;
+
+    bottom: -40px;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    animation:
+        floatUp linear forwards;
+}
+
+
+/* =================================
+   CONFETTI
+================================= */
+
+.confetti {
+    position: fixed;
+
+    top: -20px;
+
+    width: 9px;
+    height: 14px;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall linear forwards;
+}
+
+
+/* =================================
+   SPARKLE
+================================= */
+
+.sparkle {
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 15;
+
+    animation:
+        sparkleAnimation 1.5s ease-out forwards;
+}
+
+
+/* =================================
+   ANIMASI
+================================= */
+
+@keyframes glow {
+
+    from {
+        text-shadow:
+            0 0 8px white;
+    }
+
+    to {
+        text-shadow:
+            0 0 15px white,
+            0 0 35px #ff69b4;
+    }
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+
+@keyframes floatingPhoto {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+@keyframes floatUp {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes sparkleAnimation {
+
+    0% {
+        transform: scale(0);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+
+        opacity: 0;
+    }
+}
+
+
+/* =================================
+   TAMPILAN HP
+================================= */
+
+@media (max-width: 400px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .heart {
+        transform: scale(0.88);
+
+        margin-top: -5px;
+        margin-bottom: -15px;
+    }
+
+    .final-text {
+        font-size: 18px;
+    }
+
+    .big-love {
+        font-size: 23px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     PEMBUKAAN
+================================= -->
+
+<div id="intro">
+
+    <h2>
+        ✨ Masih ada satu kejutan terakhir... ✨
+    </h2>
+
+    <div id="countdown">
+        3
+    </div>
+
+</div>
+
+
+
+<!-- =================================
+     KONTEN UTAMA
+================================= -->
+
+<div id="main">
+
+    <h1>
+        🎂 HAPPY BIRTHDAY 🎂
+    </h1>
+
+    <div class="subtitle">
+        ❤️ MY BEST FRIEND ❤️
+    </div>
+
+
+    <!-- FOTO HATI -->
+
+    <div class="heart">
+
+        <img
+            src="piya1.jpg"
+            class="photo p1"
+            alt="Piya 1"
+        >
+
+        <img
+            src="piya2.jpg"
+            class="photo p2"
+            alt="Piya 2"
+        >
+
+        <img
+            src="piya3.jpg"
+            class="photo p3"
+            alt="Piya 3"
+        >
+
+        <img
+            src="piya4.jpg"
+            class="photo p4"
+            alt="Piya 4"
+        >
+
+        <img
+            src="piya5.jpg"
+            class="photo p5"
+            alt="Piya 5"
+        >
+
+        <img
+            src="piya6.jpg"
+            class="photo p6"
+            alt="Piya 6"
+        >
+
+        <img
+            src="piya7.jpg"
+            class="photo p7"
+            alt="Piya 7"
+        >
+
+        <img
+            src="piya8.jpg"
+            class="photo p8"
+            alt="Piya 8"
+        >
+
+        <img
+            src="piya9.jpg"
+            class="photo p9"
+            alt="Piya 9"
+        >
+
+        <img
+            src="piya10.jpg"
+            class="photo p10"
+            alt="Piya 10"
+        >
+
+    </div>
+
+
+
+    <!-- PESAN PENUTUP -->
+
+    <div class="final-text">
+
+        ✨ Setelah semua kejutan ini,
+        akhirnya kita sampai di bagian terakhir. ✨
+
+        <br><br>
+
+        Semoga hari ulang tahunmu menjadi
+        awal dari banyak hal indah yang akan datang.
+
+        <br><br>
+
+        Teruslah tersenyum,
+        teruslah bermimpi,
+        dan jangan pernah lupa
+        bahwa kamu punya banyak kenangan
+        indah yang layak untuk dikenang. ❤️
+
+    </div>
+
+
+    <div class="big-love">
+
+        🎉 HAPPY BIRTHDAY MY BEST FRIEND 🎉
+
+        <br>
+
+        ❤️ 🥳 🎂 💐 ✨ 💕 🫶
+
+    </div>
+
+
+
+    <!-- TOMBOL -->
+
+    <a
+        href="pesan.html"
+        class="button"
+    >
+        💌 Kembali ke Pesan
+    </a>
+
+</div>
+
+
+
+<!-- =================================
+     VIEWER FOTO
+================================= -->
+
+<div id="photoViewer">
+
+    <span id="closeViewer">
+        ✕
+    </span>
+
+    <img id="viewerImage" src="">
+
+</div>
+
+
+
+<script>
+
+
+/* =================================
+   HITUNG MUNDUR
+================================= */
+
+let number = 3;
+
+const countdown =
+    document.getElementById("countdown");
+
+const intro =
+    document.getElementById("intro");
+
+const main =
+    document.getElementById("main");
+
+
+const timer =
+    setInterval(function() {
+
+        number--;
+
+        if (number > 0) {
+
+            countdown.innerHTML =
+                number;
+
+        }
+
+        else {
+
+            clearInterval(timer);
+
+            countdown.innerHTML =
+                "❤️";
+
+            setTimeout(function() {
+
+                intro.style.opacity = "0";
+
+                main.style.opacity = "1";
+
+                setTimeout(function() {
+
+                    intro.style.display =
+                        "none";
+
+                    startCelebration();
+
+                }, 1500);
+
+            }, 700);
+
+        }
+
+    }, 1000);
+
+
+
+/* =================================
+   KLIK FOTO
+================================= */
+
+const photos =
+    document.querySelectorAll(".photo");
+
+const viewer =
+    document.getElementById("photoViewer");
+
+const viewerImage =
+    document.getElementById("viewerImage");
+
+const closeViewer =
+    document.getElementById("closeViewer");
+
+
+photos.forEach(function(photo) {
+
+    photo.addEventListener("click",
+        function() {
+
+            viewerImage.src =
+                photo.src;
+
+            viewer.style.display =
+                "flex";
+
+        });
+
+});
+
+
+closeViewer.addEventListener(
+    "click",
+    function() {
+
+        viewer.style.display =
+            "none";
+
+    }
+);
+
+
+viewer.addEventListener(
+    "click",
+    function(e) {
+
+        if (e.target === viewer) {
+
+            viewer.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+
+/* =================================
+   PERAYAAN
+================================= */
+
+function startCelebration() {
+
+    fireworks();
+
+    createConfetti();
+
+    setInterval(
+        createHeart,
+        450
+    );
+
+    setInterval(
+        createSparkle,
+        300
+    );
+
+}
+
+
+
+/* =================================
+   CONFETTI
+================================= */
+
+function createConfetti() {
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+
+        piece.style.transform =
+            "rotate(" +
+            Math.random() * 360 +
+            "deg)";
+
+
+        document.body.appendChild(
+            piece
+        );
+
+
+        setTimeout(function() {
+
+            piece.remove();
+
+        }, 8000);
+
+    }
+
+}
+
+
+
+/* =================================
+   HATI
+================================= */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "floating-heart";
+
+
+    const symbols = [
+        "❤️",
+        "💕",
+        "💖",
+        "💗",
+        "💓",
+        "💞",
+        "✨"
+    ];
+
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (18 + Math.random() * 18) +
+        "px";
+
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 5) +
+        "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 9000);
+
+}
+
+
+
+/* =================================
+   SPARKLE
+================================= */
+
+function createSparkle() {
+
+    const sparkle =
+        document.createElement("div");
+
+    sparkle.className =
+        "sparkle";
+
+    sparkle.innerHTML =
+        "✨";
+
+
+    sparkle.style.left =
+        Math.random() * 100 + "vw";
+
+
+    sparkle.style.top =
+        Math.random() * 90 + "vh";
+
+
+    sparkle.style.fontSize =
+        (12 + Math.random() * 18) +
+        "px";
+
+
+    document.body.appendChild(
+        sparkle
+    );
+
+
+    setTimeout(function() {
+
+        sparkle.remove();
+
+    }, 1500);
+
+}
+
+
+
+/* =================================
+   KEMBANG API
+================================= */
+
+function fireworks() {
+
+    const bursts = 6;
+
+    for (
+        let b = 0;
+        b < bursts;
+        b++
+    ) {
+
+        setTimeout(function() {
+
+            createFirework();
+
+        }, b * 700);
+
+    }
+
+}
+
+
+function createFirework() {
+
+    const centerX =
+        20 + Math.random() * 60;
+
+    const centerY =
+        15 + Math.random() * 35;
+
+
+    for (
+        let i = 0;
+        i < 20;
+        i++
+    ) {
+
+        const spark =
+            document.createElement("div");
+
+        spark.innerHTML =
+            "✦";
+
+        spark.style.position =
+            "fixed";
+
+        spark.style.left =
+            centerX + "vw";
+
+        spark.style.top =
+            centerY + "vh";
+
+        spark.style.zIndex =
+            "30";
+
+        spark.style.fontSize =
+            "18px";
+
+        spark.style.pointerEvents =
+            "none";
+
+
+        const angle =
+            (Math.PI * 2 * i) / 20;
+
+        const distance =
+            40 + Math.random() * 80;
+
+
+        spark.animate([
+
+            {
+                transform:
+                    "translate(0,0) scale(0)",
+                opacity: 1
+            },
+
+            {
+                transform:
+                    "translate(" +
+                    Math.cos(angle) *
+                    distance +
+                    "px," +
+                    Math.sin(angle) *
+                    distance +
+                    "px) scale(1.5)",
+
+                opacity: 0
+            }
+
+        ], {
+
+            duration: 1200,
+            easing: "ease-out"
+
+        });
+
+
+        document.body.appendChild(
+            spark
+        );
+
+
+        setTimeout(function() {
+
+            spark.remove();
+
+        }, 1300);
+
+    }
+
+}
+
+</script>
+
+
+</body>
+  </html>
