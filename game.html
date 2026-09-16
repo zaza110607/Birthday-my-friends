@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Friendship Quiz 💕</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffb6d9, #c9a7ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.95);
+    padding: 30px 22px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1 {
+    color: #ff4f9a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.question {
+    font-size: 19px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 15px;
+    background: #ffe0ee;
+    color: #555;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option:hover {
+    background: #ffb6d9;
+    transform: scale(1.03);
+}
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+.next {
+    display: none;
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 20px;
+    background: #ff5fa2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.progress {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Hati terbang */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    animation: naik 5s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes naik {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>🎀 Friendship Quiz 🎀</h1>
+
+    <div class="subtitle">
+        Seberapa kenal kamu dengan sahabatmu? 💕
+    </div>
+
+    <div class="progress" id="progress">
+        Pertanyaan 1 dari 5
+    </div>
+
+    <div class="question" id="question">
+        Pertanyaan akan muncul di sini
+    </div>
+
+    <div id="options"></div>
+
+    <div id="result"></div>
+
+    <button class="next" id="nextButton" onclick="nextQuestion()">
+        Lanjut 💕
+    </button>
+
+</div>
+
+<script>
+
+const questions = [
+
+    {
+        question: "Apa yang paling sering kita lakukan bersama? 😆",
+        options: [
+            "Ngobrol sampai lupa waktu 💬",
+            "Belanja 🛍️",
+            "Olahraga 🏃",
+            "Masak bersama 🍳"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Kalau kita sedang ketemu, biasanya paling banyak... 😂",
+        options: [
+            "Diam 🤐",
+            "Tertawa 🤣",
+            "Tidur 😴",
+            "Belajar 📚"
+        ],
+        answer: 1
+    },
+
+    {
+        question: "Apa yang paling penting dalam persahabatan kita? 💕",
+        options: [
+            "Saling mendukung 🤝",
+            "Saling menjauh 😭",
+            "Saling bertengkar 😤",
+            "Tidak saling peduli 😶"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Kalau sahabat sedang sedih, apa yang harus dilakukan? 🥺",
+        options: [
+            "Ditinggalkan",
+            "Dibiarkan sendiri",
+            "Ditemani dan didengarkan 💗",
+            "Dimarahi"
+        ],
+        answer: 2
+    },
+
+    {
+        question: "Apakah persahabatan kita akan tetap selamanya? 🥹💕",
+        options: [
+            "Iyaaa! ❤️",
+            "Tidak",
+            "Mungkin",
+            "Entahlah"
+        ],
+        answer: 0
+    }
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function showQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("progress").innerText =
+        "Pertanyaan " + (currentQuestion + 1) +
+        " dari " + questions.length;
+
+    document.getElementById("question").innerText =
+        q.question;
+
+    document.getElementById("result").innerText = "";
+
+    document.getElementById("nextButton").style.display = "none";
+
+    const optionsDiv = document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+
+        button.innerText = option;
+
+        button.onclick = function() {
+            checkAnswer(index);
+        };
+
+        optionsDiv.appendChild(button);
+
+    });
+}
+
+function checkAnswer(selected) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const result = document.getElementById("result");
+
+    if (selected === questions[currentQuestion].answer) {
+
+        score++;
+
+        result.innerText = "Benar! 🥳💕";
+
+    } else {
+
+        result.innerText =
+            "Hehe, belum tepat 😝💕";
+
+    }
+
+    document.getElementById("nextButton").style.display =
+        "inline-block";
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showFinalResult();
+
+    }
+}
+
+function showFinalResult() {
+
+    document.querySelector(".card").innerHTML = `
+
+        <h1>🎉 Quiz Selesai! 🎉</h1>
+
+        <p style="font-size:20px;">
+            Skormu:
+        </p>
+
+        <p style="font-size:40px;">
+            ${score} / ${questions.length} 💕
+        </p>
+
+        <p style="color:#666;">
+            Terima kasih sudah memainkan quiz ini 🥹❤️
+        </p>
+
+        <button class="next"
+                style="display:inline-block;"
+                onclick="location.href='pesan.html'">
+            Buka Pesan 💌
+        </button>
+
+    `;
+
+}
+
+showQuestion();
+
+</script>
+
+<!-- Hati -->
+<div class="heart" style="left:10%; animation-delay:0s;">💗</div>
+<div class="heart" style="left:30%; animation-delay:2s;">💕</div>
+<div class="heart" style="left:50%; animation-delay:1s;">💖</div>
+<div class="heart" style="left:70%; animation-delay:3s;">💗</div>
+<div class="heart" style="left:90%; animation-delay:1.5s;">💕</div>
+
+</body>
+  </html>
