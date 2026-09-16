@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pesan Untuk Sahabat 💌</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd6e7,
+                    #d9c2ff,
+                    #ffe5ef
+                );
+
+            overflow-x: hidden;
+            padding: 25px 0;
+        }
+
+
+        /* =========================
+           HATI BERGERAK
+           ========================= */
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 1;
+        }
+
+
+        .heart {
+            position: absolute;
+
+            bottom: -60px;
+
+            font-size: 25px;
+
+            opacity: 0.75;
+
+            animation:
+                naik 8s linear infinite;
+        }
+
+
+        .heart:nth-child(1) {
+            left: 5%;
+            animation-delay: 0s;
+            font-size: 22px;
+        }
+
+        .heart:nth-child(2) {
+            left: 25%;
+            animation-delay: 2s;
+            font-size: 28px;
+        }
+
+        .heart:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+            font-size: 23px;
+        }
+
+        .heart:nth-child(4) {
+            left: 75%;
+            animation-delay: 1s;
+            font-size: 30px;
+        }
+
+        .heart:nth-child(5) {
+            left: 90%;
+            animation-delay: 5s;
+            font-size: 20px;
+        }
+
+
+        @keyframes naik {
+
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform:
+                    translateY(-120vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           CONTAINER
+           ========================= */
+
+        .container {
+
+            width: 92%;
+            max-width: 420px;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .title {
+
+            color: #ff4f91;
+
+            font-size: 29px;
+
+            margin-bottom: 8px;
+
+            text-shadow:
+                0 2px 5px
+                rgba(255, 92, 154, 0.2);
+        }
+
+
+        .subtitle {
+
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           KARTU FLIP
+           ========================= */
+
+        .flip-card {
+
+            width: 100%;
+
+            height: 610px;
+
+            perspective: 1200px;
+
+            cursor: pointer;
+        }
+
+
+        .flip-inner {
+
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            transition:
+                transform 0.9s ease;
+
+            transform-style:
+                preserve-3d;
+        }
+
+
+        .flip-card.flipped
+        .flip-inner {
+
+            transform:
+                rotateY(180deg);
+        }
+
+
+        .card-front,
+        .card-back {
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255, 255, 255, 0.96);
+
+            box-shadow:
+                0 18px 45px
+                rgba(0, 0, 0, 0.15);
+
+            backface-visibility:
+                hidden;
+
+            -webkit-backface-visibility:
+                hidden;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           DEPAN KARTU
+           ========================= */
+
+        .card-front {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px;
+        }
+
+
+        .gift {
+
+            font-size: 85px;
+
+            margin-bottom: 20px;
+
+            animation:
+                bounce 1.5s ease-in-out infinite;
+        }
+
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px);
+            }
+        }
+
+
+        .front-title {
+
+            color: #ff5c9a;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .front-text {
+
+            color: #777;
+
+            line-height: 1.7;
+
+            font-size: 15px;
+        }
+
+
+        .click-text {
+
+            margin-top: 30px;
+
+            color: #ff5c9a;
+
+            font-weight: bold;
+
+            animation:
+                kedip 1.5s infinite;
+        }
+
+
+        @keyframes kedip {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+
+        /* =========================
+           BELAKANG KARTU
+           ========================= */
+
+        .card-back {
+
+            transform:
+                rotateY(180deg);
+
+            padding: 25px;
+
+            overflow-y: auto;
+
+            text-align: left;
+        }
+
+
+        /* FOTO */
+
+        .photo {
+
+            display: block;
+
+            width: 145px;
+            height: 145px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            margin: 0 auto 18px;
+
+            border: 5px solid #ffd0e2;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.15);
+        }
+
+
+        .message-title {
+
+            text-align: center;
+
+            color: #ff5c9a;
+
+            font-size: 23px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .message {
+
+            color: #555;
+
+            font-size: 14px;
+
+            line-height: 1.75;
+
+            text-align: left;
+        }
+
+
+        .message b {
+
+            color: #ff4f91;
+        }
+
+
+        .message i {
+
+            color: #8d62bd;
+        }
+
+
+        /* =========================
+           TOMBOL
+           ========================= */
+
+        .next-button {
+
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6fa8,
+                    #ff4f91
+                );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px
+                rgba(255, 92, 154, 0.3);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        .next-button:active {
+
+            transform:
+                scale(0.96);
+
+            box-shadow:
+                0 4px 10px
+                rgba(255, 92, 154, 0.25);
+        }
+
+
+        /* =========================
+           PETUNJUK
+           ========================= */
+
+        .hint {
+
+            margin-top: 12px;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           SCROLLBAR KARTU
+           ========================= */
+
+        .card-back::-webkit-scrollbar {
+
+            width: 5px;
+        }
+
+
+        .card-back::-webkit-scrollbar-thumb {
+
+            background: #ffc1d9;
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 380px) {
+
+            .flip-card {
+
+                height: 570px;
+            }
+
+            .card-back {
+
+                padding: 20px;
+            }
+
+            .message {
+
+                font-size: 13px;
+
+                line-height: 1.65;
+            }
+
+            .photo {
+
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HATI BERGERAK
+         ========================= -->
+
+    <div class="hearts">
+
+        <div class="heart">❤️</div>
+
+        <div class="heart">💗</div>
+
+        <div class="heart">💕</div>
+
+        <div class="heart">💖</div>
+
+        <div class="heart">💝</div>
+
+    </div>
+
+
+
+    <!-- =========================
+         KONTEN UTAMA
+         ========================= -->
+
+    <div class="container">
+
+
+        <h1 class="title">
+            💌 Pesan Untukmu
+        </h1>
+
+
+        <p class="subtitle">
+
+            Setelah melewati semua pertanyaan,
+            sekarang ada satu pesan yang ingin
+            aku sampaikan khusus untukmu... 🥹💕
+
+        </p>
+
+
+
+        <!-- =========================
+             KARTU
+             ========================= -->
+
+        <div class="flip-card"
+             id="flipCard">
+
+
+            <div class="flip-inner">
+
+
+                <!-- =====================
+                     BAGIAN DEPAN
+                     ===================== -->
+
+                <div class="card-front">
+
+
+                    <div class="gift">
+                        🎁
+                    </div>
+
+
+                    <h2 class="front-title">
+
+                        Untuk Sahabatku 💕
+
+                    </h2>
+
+
+                    <p class="front-text">
+
+                        Ada sebuah pesan yang sudah
+                        aku simpan untukmu.
+
+                        <br><br>
+
+                        Mungkin kata-kata ini tidak akan
+                        pernah cukup untuk menggambarkan
+                        betapa berartinya persahabatan
+                        kita...
+
+                    </p>
+
+
+                    <div class="click-text">
+
+                        👆 Klik kartu untuk membukanya
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =====================
+                     BAGIAN BELAKANG
+                     ===================== -->
+
+                <div class="card-back">
+
+
+                    <!-- FOTO SAHABAT -->
+
+                    <img
+                        src="foto-sahabat.jpg"
+                        class="photo"
+                        alt="Foto Sahabat"
+                    >
+
+
+                    <h2 class="message-title">
+
+                        💖 Pesan dan Kesan 💖
+
+                    </h2>
+
+
+
+                    <!-- =================
+                         PESAN PANJANG
+                         ================= -->
+
+                    <p class="message">
+
+
+                        Untuk kamu, sahabat yang begitu
+                        berarti dalam hidupku... 💗
+
+
+                        <br><br>
+
+
+                        Selamat ulang tahun untuk salah satu
+                        orang yang kehadirannya selalu punya
+                        tempat tersendiri di hidupku.
+                        🎂🎉
+
+
+                        <br><br>
+
+
+                        Hari ini mungkin hanya terlihat seperti
+                        bertambahnya satu angka di umurmu.
+                        Tapi bagiku, hari ini adalah pengingat
+                        bahwa dunia pernah menghadirkan
+                        seseorang sebaik dan seberharga kamu
+                        dalam hidupku. 🥹❤️
+
+
+                        <br><br>
+
+
+                        Aku masih sering berpikir, dari sekian
+                        banyak orang yang bisa kita temui di
+                        dunia ini, ternyata kita bisa dipertemukan
+                        dan akhirnya menjadi sahabat.
+
+
+                        <br><br>
+
+
+                        Padahal awalnya mungkin kita tidak
+                        pernah menyangka kalau seseorang yang
+                        awalnya hanya kita kenal biasa bisa
+                        menjadi seseorang yang kemudian
+                        menyimpan begitu banyak cerita bersama
+                        kita.
+
+
+                        <br><br>
+
+
+                        Terima kasih karena selama ini sudah
+                        menjadi bagian dari perjalanan hidupku.
+                        Terima kasih untuk setiap tawa yang
+                        pernah kita bagi, setiap cerita yang
+                        pernah kita dengarkan, setiap candaan
+                        yang mungkin sebenarnya tidak lucu
+                        tapi tetap berhasil membuat kita tertawa,
+                        dan setiap momen sederhana yang sekarang
+                        berubah menjadi kenangan yang begitu
+                        berharga. 🤍
+
+
+                        <br><br>
+
+
+                        Terima kasih juga karena pernah menjadi
+                        tempat untuk bercerita ketika semuanya
+                        terasa berat.
+
+
+                        <br><br>
+
+
+                        Terima kasih karena mau mendengarkan,
+                        bahkan ketika ceritaku mungkin terlalu
+                        panjang dan berulang-ulang.
+
+
+                        <br><br>
+
+
+                        Terima kasih karena tidak selalu
+                        membutuhkan alasan untuk tetap ada.
+
+
+                        <br><br>
+
+
+                        Mungkin aku tidak selalu mengatakan
+                        betapa berartinya kamu bagiku.
+
+
+                        <br><br>
+
+
+                        Kadang aku juga tidak pandai menunjukkan
+                        rasa terima kasihku.
+
+
+                        <br><br>
+
+
+                        Tapi percayalah, aku sangat menghargai
+                        setiap hal kecil yang pernah kamu lakukan.
+
+
+                        <br><br>
+
+
+                        Ada banyak sekali kenangan yang sudah
+                        kita lewati.
+
+
+                        <br><br>
+
+
+                        Ada hari-hari ketika kita tertawa sampai
+                        lupa waktu, ada hari ketika kita saling
+                        mengejek, ada hari ketika kita hanya
+                        membicarakan hal-hal random yang
+                        sebenarnya tidak penting, dan ada juga
+                        hari ketika salah satu dari kita hanya
+                        membutuhkan seseorang untuk menemani.
+
+
+                        <br><br>
+
+
+                        Dan dari semua itu, aku sadar bahwa
+                        persahabatan bukan tentang harus selalu
+                        bersama setiap waktu.
+
+
+                        <br><br>
+
+
+                        Bukan juga tentang harus selalu
+                        sepemikiran atau tidak pernah berbeda
+                        pendapat.
+
+
+                        <br><br>
+
+
+                        Menurutku, persahabatan adalah tentang
+                        tetap memilih untuk saling memahami
+                        meskipun terkadang berbeda.
+
+
+                        <br><br>
+
+
+                        Tentang tetap saling mendoakan meskipun
+                        sedang tidak berada di tempat yang sama.
+
+
+                        <br><br>
+
+
+                        Tentang mengetahui bahwa ketika suatu
+                        hari kita membutuhkan seseorang,
+                        masih ada satu nama yang bisa kita cari.
+
+
+                        <br><br>
+
+
+                        Aku tidak tahu bagaimana perjalanan
+                        hidup kita beberapa tahun ke depan.
+
+
+                        <br><br>
+
+
+                        Mungkin nanti kita akan memiliki
+                        kesibukan masing-masing.
+
+
+                        <br><br>
+
+
+                        Mungkin kita akan bertemu lebih jarang.
+
+
+                        <br><br>
+
+
+                        Mungkin akan ada banyak hal yang berubah.
+
+
+                        <br><br>
+
+
+                        Tapi aku berharap, sesibuk apa pun
+                        hidup kita nanti, sejauh apa pun langkah
+                        kita pergi, semoga kita tidak pernah
+                        benar-benar menjadi orang asing.
+
+
+                        <br><br>
+
+
+                        Semoga nanti ketika kita sudah jauh
+                        lebih dewasa, kita masih bisa duduk
+                        bersama dan tertawa mengingat semua
+                        hal bodoh yang pernah kita lakukan.
+
+
+                        <br><br>
+
+
+                        Mengingat bagaimana kita pernah
+                        melewati masa-masa sulit bersama.
+
+
+                        <br><br>
+
+
+                        Mengingat betapa sederhananya
+                        kebahagiaan kita dulu.
+
+
+                        <br><br>
+
+
+                        Untuk umurmu yang baru, aku tidak ingin
+                        hanya mendoakanmu agar mendapatkan
+                        apa yang kamu inginkan.
+
+
+                        <br><br>
+
+
+                        Aku ingin mendoakan sesuatu yang
+                        lebih dari itu.
+
+
+                        <br><br>
+
+
+                        Semoga kamu selalu dikelilingi
+                        orang-orang yang tulus menyayangimu.
+
+
+                        <br><br>
+
+
+                        Semoga langkahmu selalu dipermudah.
+
+
+                        <br><br>
+
+
+                        Semoga setiap usaha yang kamu lakukan
+                        menemukan jalannya.
+
+
+                        <br><br>
+
+
+                        Semoga ketika kamu merasa lelah,
+                        kamu selalu menemukan alasan untuk
+                        kembali tersenyum.
+
+
+                        <br><br>
+
+
+                        Semoga kamu tidak terlalu keras
+                        kepada dirimu sendiri.
+
+
+                        <br><br>
+
+
+                        Kalau suatu hari kamu merasa gagal,
+                        semoga kamu mengingat bahwa gagal
+                        bukan berarti kamu tidak berharga.
+
+
+                        <br><br>
+
+
+                        Kalau suatu hari kamu merasa tidak
+                        cukup baik, semoga kamu ingat bahwa
+                        ada orang-orang yang bersyukur karena
+                        pernah mengenalmu.
+
+
+                        <br><br>
+
+
+                        Dan kalau suatu hari kamu merasa
+                        sendirian, semoga kamu ingat bahwa
+                        kamu tidak benar-benar sendirian.
+
+
+                        <br><br>
+
+
+                        Ada orang-orang yang menyayangimu,
+                        termasuk aku sebagai sahabatmu. 🤍
+
+
+                        <br><br>
+
+
+                        Terima kasih sudah bertahan sampai
+                        sejauh ini.
+
+
+                        <br><br>
+
+
+                        Terima kasih sudah menjadi dirimu sendiri.
+
+
+                        <br><br>
+
+
+                        Jangan merasa harus menjadi sempurna
+                        hanya untuk membuat orang lain
+                        menyukaimu.
+
+
+                        <br><br>
+
+
+                        Tetaplah menjadi kamu yang aku kenal:
+                        seseorang yang punya banyak cerita,
+                        banyak mimpi, banyak kekurangan,
+                        tetapi tetap punya hati yang baik.
+
+
+                        <br><br>
+
+
+                        Aku berharap suatu hari nanti ketika
+                        kamu melihat kembali perjalanan
+                        hidupmu, kamu bisa tersenyum dan berkata:
+
+
+                        <br><br>
+
+
+                        <i>
+                            "Ternyata aku sudah melewati
+                            begitu banyak hal, dan aku berhasil
+                            sampai sejauh ini."
+                        </i>
+
+
+                        <br><br>
+
+
+                        Dan aku berharap, kalau saat itu tiba,
+                        aku masih menjadi salah satu orang
+                        yang bisa mendengarkan ceritamu.
+                        🥹💕
+
+
+                        <br><br>
+
+
+                        Sekali lagi, selamat ulang tahun,
+                        sahabatku. 🎂💖
+
+
+                        <br><br>
+
+
+                        Semoga umur yang baru membawa lebih
+                        banyak kebahagiaan, lebih banyak
+                        kesempatan, lebih banyak alasan untuk
+                        tersenyum, dan lebih banyak cerita indah
+                        yang bisa kita kenang bersama.
+
+
+                        <br><br>
+
+
+                        Terima kasih sudah hadir dalam hidupku.
+
+
+                        <br><br>
+
+
+                        Terima kasih sudah menjadi sahabatku.
+
+
+                        <br><br>
+
+
+                        Dan terima kasih untuk semua kenangan
+                        yang sampai hari ini masih membuatku
+                        tersenyum.
+
+
+                        <br><br>
+
+
+                        Aku mungkin tidak tahu apa yang akan
+                        terjadi di masa depan, tapi untuk hari
+                        ini aku hanya ingin mengatakan satu hal:
+
+
+                        <br><br>
+
+
+                        <b>
+                            Aku bersyukur pernah bertemu
+                            denganmu. ❤️
+                        </b>
+
+
+                        <br><br>
+
+
+                        Semoga persahabatan kita bukan hanya
+                        menjadi bagian dari masa lalu, tetapi
+                        menjadi salah satu cerita yang tetap
+                        kita bawa sampai kita tua nanti.
+
+
+                        <br><br>
+
+
+                        <b>
+                            HAPPY BIRTHDAY,
+                            MY BEST FRIEND! 🎂🎉💖
+                        </b>
+
+
+                        <br><br>
+
+
+                        Dengan penuh rasa sayang,
+
+
+                        <br>
+
+
+                        Sahabatmu yang selalu mendoakanmu. 🤍
+
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             TOMBOL LANJUT
+             ========================= -->
+
+        <button
+            class="next-button"
+            onclick="lanjut()">
+
+            Lanjut ke Kejutan Berikutnya ❤️
+
+        </button>
+
+
+        <p class="hint">
+
+            💕 Klik kartu untuk membaca pesan
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+
+        /* =========================
+           FLIP KARTU
+           ========================= */
+
+        const flipCard =
+            document.getElementById("flipCard");
+
+
+        flipCard.addEventListener(
+            "click",
+            function() {
+
+                this.classList.toggle(
+                    "flipped"
+                );
+
+            }
+        );
+
+
+
+        /* =========================
+           LANJUT KE HALAMAN AKHIR
+           ========================= */
+
+        function lanjut() {
+
+            window.location.href =
+                "akhir.html";
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
