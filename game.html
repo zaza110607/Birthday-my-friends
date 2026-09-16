@@ -230,7 +230,7 @@ h1 {
     </div>
 
     <div class="progress" id="progress">
-        Pertanyaan 1 dari 5
+        Pertanyaan 1 dari 10
     </div>
 
     <div class="question" id="question">
@@ -283,7 +283,6 @@ const questions = [
         answer: 0
     },
 
-
     {
         question: "Kalau kita sedang ketemu, biasanya paling banyak... 😂",
 
@@ -296,7 +295,6 @@ const questions = [
 
         answer: 1
     },
-
 
     {
         question: "Apa yang paling penting dalam persahabatan kita? 💕",
@@ -311,7 +309,6 @@ const questions = [
         answer: 2
     },
 
-
     {
         question: "Kalau sahabat sedang sedih, apa yang harus dilakukan? 🥺",
 
@@ -324,7 +321,6 @@ const questions = [
 
         answer: 3
     },
-
 
     {
         question: "Apakah persahabatan kita akan tetap selamanya? 🥹💕",
@@ -340,68 +336,68 @@ const questions = [
     },
 
     {
-    question: "Kalau kita lagi gabut, kemungkinan besar kita bakal... 😭😂",
+        question: "Kalau kita lagi gabut, kemungkinan besar kita bakal... 😭😂",
 
-    options: [
-        "Tidur seharian 😴",
-        "Main game bareng 🎮",
-        "Pergi olahraga 🏃",
-        "Baca buku 📚"
-    ],
+        options: [
+            "Tidur seharian 😴",
+            "Main game bareng 🎮",
+            "Pergi olahraga 🏃",
+            "Baca buku 📚"
+        ],
 
-    answer: 1
-},
+        answer: 1
+    },
 
-{
-    question: "Kalau aku bilang 'aku punya cerita', kamu biasanya... 👀",
+    {
+        question: "Kalau aku bilang 'aku punya cerita', kamu biasanya... 👀",
 
-    options: [
-        "Langsung menghilang 🏃",
-        "Pura-pura tidak dengar 🤐",
-        "Langsung kepo dan siap dengerin 👂😂",
-        "Langsung tidur 😴"
-    ],
+        options: [
+            "Langsung menghilang 🏃",
+            "Pura-pura tidak dengar 🤐",
+            "Langsung kepo dan siap dengerin 👂😂",
+            "Langsung tidur 😴"
+        ],
 
-    answer: 2
-},
+        answer: 2
+    },
 
-{
-    question: "Kalau kita foto bareng, biasanya yang terjadi adalah... 📸🤣",
+    {
+        question: "Kalau kita foto bareng, biasanya yang terjadi adalah... 📸🤣",
 
-    options: [
-        "Cuma sekali foto langsung bagus ✨",
-        "Foto berkali-kali sampai dapat yang bagus 😂",
-        "Tidak pernah foto",
-        "Selalu serius 😐"
-    ],
+        options: [
+            "Cuma sekali foto langsung bagus ✨",
+            "Foto berkali-kali sampai dapat yang bagus 😂",
+            "Tidak pernah foto",
+            "Selalu serius 😐"
+        ],
 
-    answer: 1
-},
+        answer: 1
+    },
 
-{
-    question: "Kalau salah satu dari kita punya masalah, yang paling mungkin terjadi... 🥺💗",
+    {
+        question: "Kalau salah satu dari kita punya masalah, yang paling mungkin terjadi... 🥺💗",
 
-    options: [
-        "Saling cuek 😶",
-        "Saling menyalahkan 😤",
-        "Saling menghilang 😭",
-        "Saling cerita dan kasih semangat 🤝💕"
-    ],
+        options: [
+            "Saling cuek 😶",
+            "Saling menyalahkan 😤",
+            "Saling menghilang 😭",
+            "Saling cerita dan kasih semangat 🤝💕"
+        ],
 
-    answer: 3
-},
+        answer: 3
+    },
 
-{
-    question: "Kalau suatu hari kita sudah tua, kita masih bakal... 🥹❤️",
+    {
+        question: "Kalau suatu hari kita sudah tua, kita masih bakal... 🥹❤️",
 
-    options: [
-        "Tetap saling cerita dan ketawa bareng 😂",
-        "Tidak saling kenal 😭",
-        "Saling blokir 🤣",
-        "Lupa satu sama lain 😶"
-    ],
+        options: [
+            "Tetap saling cerita dan ketawa bareng 😂",
+            "Tidak saling kenal 😭",
+            "Saling blokir 🤣",
+            "Lupa satu sama lain 😶"
+        ],
 
-    answer: 0
+        answer: 0
     }
 
 ];
@@ -422,50 +418,39 @@ function showQuestion() {
 
     const q = questions[currentQuestion];
 
-
     document.getElementById("progress").innerText =
         "Pertanyaan " +
         (currentQuestion + 1) +
         " dari " +
         questions.length;
 
-
     document.getElementById("question").innerText =
         q.question;
 
-
     document.getElementById("result").innerHTML = "";
-
 
     document.getElementById("nextButton").style.display =
         "none";
 
-
     const optionsDiv =
         document.getElementById("options");
 
-
     optionsDiv.innerHTML = "";
-
 
     q.options.forEach(function(option, index) {
 
         const button =
             document.createElement("button");
 
-
         button.className = "option";
 
-
         button.innerText = option;
-
 
         button.onclick = function() {
 
             checkAnswer(index);
 
         };
-
 
         optionsDiv.appendChild(button);
 
@@ -485,7 +470,6 @@ function checkAnswer(selected) {
     }
 
     answered = true;
-
 
     const q = questions[currentQuestion];
 
@@ -513,25 +497,19 @@ function checkAnswer(selected) {
 
         score++;
 
-
         buttons[selected]
             .classList.add("correct");
-
 
         result.innerHTML =
             "🎉 <b>YEAYYY BENAR!</b> 🥳💖<br>" +
             "Kamu tahu banget tentang kita! 💕";
 
-
         result.style.color = "#26733a";
-
 
         document.getElementById("card")
             .classList.add("benar");
 
-
         buatConfetti();
-
 
         setTimeout(function() {
 
@@ -552,22 +530,17 @@ function checkAnswer(selected) {
         buttons[selected]
             .classList.add("wrong");
 
-
         buttons[q.answer]
             .classList.add("correct");
-
 
         result.innerHTML =
             "❌ <b>YAHHH SALAH! 😝</b><br>" +
             "Jawaban yang benar berwarna hijau 💚";
 
-
         result.style.color = "#a83232";
-
 
         document.getElementById("card")
             .classList.add("salah");
-
 
         setTimeout(function() {
 
@@ -596,33 +569,26 @@ function buatConfetti() {
     const emoji =
         ["🎉", "✨", "💕", "💖", "🎊", "🥳"];
 
-
     for (let i = 0; i < 25; i++) {
 
         const confetti =
             document.createElement("div");
 
-
         confetti.className =
             "confetti";
-
 
         confetti.innerText =
             emoji[Math.floor(
                 Math.random() * emoji.length
             )];
 
-
         confetti.style.left =
             Math.random() * 100 + "%";
-
 
         confetti.style.animationDuration =
             (1.5 + Math.random() * 1.5) + "s";
 
-
         document.body.appendChild(confetti);
-
 
         setTimeout(function() {
 
@@ -642,7 +608,6 @@ function buatConfetti() {
 function nextQuestion() {
 
     currentQuestion++;
-
 
     if (currentQuestion < questions.length) {
 
@@ -668,18 +633,17 @@ function showFinalResult() {
     const card =
         document.getElementById("card");
 
-
     let message;
 
 
-    if (score === 5) {
+    if (score === 10) {
 
         message =
             "WAAAWWW! BENAR SEMUA! 🥳💖";
 
     }
 
-    else if (score >= 3) {
+    else if (score >= 6) {
 
         message =
             "Wahhh, kamu cukup mengenal kita! 🥰💕";
@@ -738,7 +702,6 @@ function showFinalResult() {
         </button>
 
     `;
-
 
     buatConfetti();
 
