@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Surprise 💖</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd6e7, #d9c2ff);
+            overflow: hidden;
+        }
+
+        /* HATI BERGERAK */
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            animation: naik 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(2) {
+            left: 30%;
+            animation-delay: 1.5s;
+        }
+
+        .heart:nth-child(3) {
+            left: 55%;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(4) {
+            left: 80%;
+            animation-delay: 4.5s;
+        }
+
+        @keyframes naik {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+            }
+        }
+
+        /* KARTU */
+        .card {
+            width: 90%;
+            max-width: 380px;
+            padding: 35px 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* HADIAH */
+        .gift {
+            font-size: 70px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        h1 {
+            color: #ff5c9a;
+            margin: 15px 0 10px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* INPUT PASSWORD */
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ffc1d9;
+            border-radius: 15px;
+            outline: none;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        input:focus {
+            border-color: #ff6fa8;
+            box-shadow: 0 0 10px rgba(255,111,168,0.3);
+        }
+
+        /* TOMBOL */
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            border: none;
+            border-radius: 15px;
+            background: #ff6fa8;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* PESAN */
+        #message {
+            margin-top: 15px;
+            min-height: 24px;
+            font-weight: bold;
+        }
+
+        /* ANIMASI SALAH */
+        .shake {
+            animation: shake 0.4s;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-8px);
+            }
+
+            75% {
+                transform: translateX(8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HATI -->
+    <div class="hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💗</div>
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+    </div>
+
+    <!-- KARTU PASSWORD -->
+    <div class="card" id="card">
+
+        <div class="gift">🎁</div>
+
+        <h1>Birthday Surprise 💖</h1>
+
+        <p>
+            Ada sesuatu yang spesial untukmu... 
+            Tapi kamu harus tahu sandinya dulu 😝
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan sandi 🔐"
+        >
+
+        <button onclick="checkPassword()">
+            Buka Hadiah 🎀
+        </button>
+
+        <div id="message"></div>
+
+    </div>
+
+    <script>
+
+        function checkPassword() {
+
+            const password =
+                document.getElementById("password").value;
+
+            const message =
+                document.getElementById("message");
+
+            const card =
+                document.getElementById("card");
+
+            /*
+             * ============================
+             * GANTI SANDI DI SINI
+             * ============================
+             */
+
+            const correctPassword = "27oktober2007";
+
+
+            /* JIKA PASSWORD BENAR */
+
+            if (password === correctPassword) {
+
+                message.style.color = "#ff5c9a";
+
+                message.innerHTML =
+                    "Benar! Kejutan dimulai... 💖🎉";
+
+                setTimeout(function() {
+
+                    alert("🎉 Yeay! Password benar!");
+
+                }, 500);
+
+            }
+
+
+            /* JIKA PASSWORD SALAH */
+
+            else {
+
+                message.style.color = "#ff4f70";
+
+                message.innerHTML =
+                    "Eits! Sandi salah 😝 Coba lagi! 💕";
+
+                card.classList.remove("shake");
+
+                void card.offsetWidth;
+
+                card.classList.add("shake");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+  </html>
